@@ -93,21 +93,6 @@
 
 <script type="text/javascript">
 
-    function addProduct()
-    {
-        var xhr = new XMLHttpRequest();
-        var request = "action=ajout&r=2&l=ProductName1&s=20&p=45&q=1"
-        xhr.open("POST", "../controlleur/Ctl_Panier.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert("Erreur");
-
-            }
-        };
-        xhr.send(request);
-    }
-
     function submitForm()
     {
         var xhr = new XMLHttpRequest();
