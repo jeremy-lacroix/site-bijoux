@@ -1,2 +1,2 @@
 E-commerce web app project based on mvc model.
-Built by jeremy-lacroix
+<br>Built by jeremy-lacroix
