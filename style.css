@@ -1,0 +1,11 @@
+.nav-link{
+    color: #69d7dd!important;
+    font-weight: bold!important;
+}
+
+.logo{
+    position: absolute;
+    top: 30px;
+    height: 100px!important;
+    width: 100px!important;
+}
