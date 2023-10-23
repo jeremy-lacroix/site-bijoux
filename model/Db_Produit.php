@@ -10,19 +10,39 @@ class Db_Produit{
         $liste = ["type" => $type, "color" => $color, "sexe" => $sexe];
         $data = [];
 
-        $sql = "SELECT * FROM bijoux WHERE";
+        $sql = "SELECT `bijoux`.`Product_Name`, `couleur`.`color_name`
+        FROM `bijoux`, `couleur_bijoux`, `couleur`
+        WHERE `bijoux`.`Id` = `couleur_bijoux`.`Id_bijoux`
+        AND `couleur_bijoux`.`Id_color` = `couleur`.`id`";
         $pos = 0;
         foreach ($liste as $key => $value){
             if ($value != ""){
-                if($pos == 0){
-                    $sql .= " ".$key." = (?);";
-                    $pos += 1;
-                    $data += [$value];
-                }
-                else{
+                //filter by color
+                if($key == "color"){
+                    $sql = "SELECT `bijoux`.`Id`, `bijoux`.`Product_Name`, `bijoux`.`Size`, `bijoux`.`type`,`bijoux`.`sexe`, `bijoux`.`Picture_Name`, `bijoux`.`Price`, `couleur`.`color_name`
+                    FROM `bijoux`, `couleur_bijoux`, `couleur`
+                    WHERE `bijoux`.`Id` = `couleur_bijoux`.`Id_bijoux`
+                    AND `couleur_bijoux`.`Id_color` = `couleur`.`id`
+                    AND `couleur`.`color_name` = \"orJaune\"";
+
                     $sql .= " AND ".$key." = (?);";
                     $pos += 1;
                     $data += [$value];
+                }
+                //filter by type and sexe
+                else{
+                    $sql = "SELECT `bijoux`.`Id`, `bijoux`.`Product_Name`, `bijoux`.`Size`, `bijoux`.`type`,`bijoux`.`sexe`, `bijoux`.`Picture_Name`, `bijoux`.`Price`, `couleur`.`color_name`
+                    FROM `bijoux`, `couleur` WHERE";
+                    if($pos == 0){
+                        $sql .= " ".$key." = (?);";
+                        $pos += 1;
+                        $data += [$value];
+                    }
+                    else{
+                        $sql .= " AND ".$key." = (?);";
+                        $pos += 1;
+                        $data += [$value];
+                    }
                 }
             }
         }
@@ -40,7 +60,7 @@ class Db_Produit{
                     <div class="card">
                         <img src="../ressources/'.$objResult['Picture_Name'].'.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">'.$objResult['type'].' '.$objResult['Product_Name'].' '.$objResult['couleur'].'</h5>
+                            <h5 class="card-title">'.$objResult['type'].' '.$objResult['Product_Name'].' '.$objResult['color_name'].'</h5>
                             <div class="d-flex justify-content-between">
                                 <h5><strong>'.$objResult['Price'].' €</strong></h5>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="javascript :setSize(document.getElementById(\''.$objResult['Id'].'\').value)">

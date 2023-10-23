@@ -31,7 +31,9 @@
                         </h2>
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                <div class="d-block"><input type="radio" name="color" value="orJaune" onclick="javascript :submitForm()">or jaune</input></div>
+                                <div class="d-block"><input type="radio" name="color" value="orRose" onclick="javascript :submitForm()">or rose</input></div>
+                                <div class="d-block"><input type="radio" name="color" value="*" onclick="javascript :submitForm()">autres</input></div>
                             </div>
                         </div>
                     </div>
@@ -102,7 +104,6 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 document.getElementById("result").innerHTML = xhr.response;
-
             }
         };
 
