@@ -30,7 +30,7 @@ include_once("../model/Panier.php");
 
         <div class="col-md-4 ">
             <div class="row m-0 justify-content-center">
-                <img class="logo" src="../image/ring.png" ></img>
+                <img class="logo" src="../ressources/ring.png" ></img>
             </div>
         </div>
 

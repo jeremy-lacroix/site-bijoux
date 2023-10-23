@@ -38,7 +38,7 @@ class Db_Produit{
             $out .= '
                 <div class="col">
                     <div class="card">
-                        <img src="../image/'.$objResult['Picture_Name'].'.jpg" class="card-img-top" alt="...">
+                        <img src="../ressources/'.$objResult['Picture_Name'].'.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">'.$objResult['type'].' '.$objResult['Product_Name'].' '.$objResult['couleur'].'</h5>
                             <div class="d-flex justify-content-between">
